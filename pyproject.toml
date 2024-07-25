@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "zurich_bdx_accelerator"
+version = "0.1.0"
+description = ""
+authors = ["Ezra-Kirk <ezrakirk@kubrickgroup.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10 <3.12"
+streamlit = "^1.35.0"
+pre-commit = "^3.7.1"
+snowflake-snowpark-python = {extras = ["modin"], version = "^1.18.0"}
+python-dotenv = "^1.0.1"
+openpyxl = "^3.1.4"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

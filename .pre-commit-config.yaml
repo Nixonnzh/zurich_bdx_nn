@@ -1,0 +1,72 @@
+# Automatically run pre-commit with:
+# 1. `pip install pre-commit`
+#   - Recommend `pipx install pre-commit` as it will install pre-commit in it's own venv.
+# 2. `pre-commit install`
+#   - Runs pre-commits on `git commit`
+#
+# If you need to overide the pre-commit for whatever reason:
+#   - `git commit --no-verify -m "commit message"` (can also use `-n` instead of `--no-verify`)
+
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+  - id: check-yaml
+    exclude: mkdocs.yml
+  - id: no-commit-to-branch
+    args: ["--branch", "main"]
+  - id: end-of-file-fixer
+    exclude: docs/open_api.json
+  - id: mixed-line-ending
+    args: ["--fix=lf"] # Enforces line feed as a the file ending. (windows defaults to "crlf" but cloud development should be done on linux.)
+  - id: trailing-whitespace
+  - id: pretty-format-json
+    args: ["--autofix"]
+    exclude: docs/open_api.json
+  - id: detect-private-key
+
+  - id: requirements-txt-fixer
+  - id: sort-simple-yaml
+
+- repo: https://github.com/sqlfluff/sqlfluff
+  rev: 2.1.1
+  hooks:
+    - id: sqlfluff-lint
+    - id: sqlfluff-fix
+
+- repo: https://github.com/psf/black
+  rev: 23.3.0
+  hooks:
+  - id: black
+    language_version: &language python3.10
+    args: ["--line-length=88"]
+
+- repo: https://github.com/PyCQA/pydocstyle
+  rev: 6.3.0
+  hooks:
+  - id: pydocstyle
+    language_version: *language
+    exclude: ^(tests)/|^(alembic)/
+
+- repo: https://github.com/PyCQA/isort
+  rev: 5.11.5
+  hooks:
+  - id: isort
+    args: ["--profile", "black"]
+    language_version: *language
+
+- repo: https://github.com/PyCQA/flake8
+  rev: 6.0.0
+  hooks:
+  - id: flake8
+    language_version: *language
+    args: ["--max-line-length=88"]
+
+- repo: https://github.com/pre-commit/pygrep-hooks
+  rev: v1.10.0
+  hooks:
+    - id: python-check-blanket-noqa
+    - id: python-check-blanket-type-ignore
+    - id: python-use-type-annotations
+    # - id: python-no-eval # Prevents the use of the eval function.
+    - id: python-check-mock-methods # Checks for common mistakes when mocking.

@@ -1,0 +1,3 @@
+stage_dir: '@DEV.RAW.FILE_TYPE_2'
+temp_dir: '/tmp'
+table_name: 'nn_raw_temp_f2'
