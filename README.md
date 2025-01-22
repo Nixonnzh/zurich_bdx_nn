@@ -1,4 +1,4 @@
-# Zurich Project Proof-Of-Concept (POC)
+# Zurich Proof-Of-Concept (POC)
 
 ## Using Poetry with this project
 
