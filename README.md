@@ -1,4 +1,4 @@
-# Zurich Accelerator
+# Zurich Project Proof-Of-Concept (POC)
 
 ## Using Poetry with this project
 
