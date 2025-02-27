@@ -1,7 +1,7 @@
 # **Insurance Data Ingestion Pipeline**
 
 ## **Overview**
-This project demonstrates a **data ingestion pipeline** for processing multiple categories of **insurance data files** (XLSX and CSV) using **Snowflake Snowpark**. The pipeline follows the **Medallion Architecture** to ensure structured data processing through **Raw, Clean, and Curated layers**.
+This project demonstrates a **data ingestion pipeline** for processing multiple categories of **insurance data files** (XLS and CSV) using **Snowflake Snowpark**. The pipeline follows the **Medallion Architecture** to ensure structured data processing through **Raw, Clean, and Curated layers**.
 
 The pipeline extracts data from **staged files**, processes them, and loads them into a **Snowflake Data Warehouse**, enabling analytics and reporting.
 
